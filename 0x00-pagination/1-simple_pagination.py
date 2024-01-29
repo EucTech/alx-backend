@@ -41,7 +41,7 @@ class Server:
 
         assert page > 0
         assert page_size > 0
-    
+
         data = self.dataset()
 
         try:
