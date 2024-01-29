@@ -55,15 +55,21 @@ class Server:
         (and defaults) as get_page and returns a dictionary containing
         the following key-value pairs
         """
-        data_s = self.get_page(page, page_size)
-        t_page = len(self.dataset()) // page_size
 
-        dict = {
-            "page_size": page_size if page_size <= len(data_s) else len(data_s),
-            "page": page,
-            "data": data_s,
-            "next_page": page + 1 if page >= 0 else None,
-            "prev_page": page - 1 if page >= 1 else None,
-            "total_pages": t_page
-            }
-        return dict
+        data_dict = {}
+        data_dict['page_size'] = len(self.get_page(page, page_size))
+        data_dict['page'] = page
+        data_dict['data'] = self.get_page(page, page_size)
+        total_pages = (len(self.__dataset) + page_size - 1) // page_size
+        if total_pages <= page + 1:
+            next_page = None
+        else:
+            next_page = page + 1
+        data_dict['next_page'] = next_page
+        if page - 1 < 1:
+            prev_page = None
+        else:
+            prev_page = page - 1
+        data_dict['prev_page'] = prev_page
+        data_dict['total_pages'] = total_pages
+        return data_dict
