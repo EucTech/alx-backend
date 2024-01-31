@@ -4,6 +4,7 @@ BaseCaching and is a caching system"""
 
 from base_caching import BaseCaching
 
+
 class FIFOCache(BaseCaching):
     """Fifocahe class"""
     def __init__(self):
