@@ -2,12 +2,11 @@
 """Create a class LIFOCache that inherits from BaseCaching
 and is a caching system"""
 
-
 from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """LIFOCahe"""
+    """LIFOCahe class"""
     def __init__(self):
         """instantce"""
         super().__init__()
