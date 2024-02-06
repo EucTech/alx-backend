@@ -9,14 +9,14 @@ app = Flask(__name__)
 Babel = Babel(app)
 
 
-class Config:
+class Config(object):
     """congig"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-app.config.from_object(Config)
+app.config.from_object('1-app.Config')
 
 
 @app.route("/")
