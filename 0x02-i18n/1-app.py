@@ -10,7 +10,7 @@ Babel = Babel(app)
 
 
 class Config(object):
-    """congig"""
+    """class congig"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
