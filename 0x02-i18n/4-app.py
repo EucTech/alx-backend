@@ -4,7 +4,7 @@ decorator. Use request.accept_languages to determine the best
 match with our supported languages."""
 
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel, gettext
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -29,10 +29,12 @@ def index():
 @babel.localeselector
 def get_locale():
     """To Determines supported languages """
-    local = request.args.get('locale')
-    if local and local in app.config['LANGUAGES']:
-        return local
+    if 'locale' in request.args:
+        locale = request.args.get('locale')
+        if locale in app.config['LANGUAGES']:
+            return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
