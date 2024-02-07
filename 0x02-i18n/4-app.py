@@ -29,12 +29,10 @@ def index():
 @babel.localeselector
 def get_locale():
     """To Determines supported languages """
-    if 'locale' in request.args:
-        locale = request.args.get('locale')
-        if locale in app.config['LANGUAGES']:
-            return locale
+    local = request.args.get('locale')
+    if local and local in app.config['LANGUAGES']:
+        return local
     return request.accept_languages.best_match(app.config['LANGUAGES'])
-
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
